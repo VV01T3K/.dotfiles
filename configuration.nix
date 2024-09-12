@@ -96,7 +96,7 @@
   users.users.wojtek = {
     isNormalUser = true;
     description = "Wojtek";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       kdePackages.kate
       thunderbird
@@ -173,20 +173,21 @@
   ];
 
   # Kontenaryzacja
-  virtualisation.docker.enable = true;
-  # # Enable common container config files in /etc/containers
-  # virtualisation.containers.enable = true;
-  # virtualisation = {
-  #   podman = {
-  #     enable = true;
+  # virtualisation.docker.enable = true;
+  # Enable common container config files in /etc/containers
+  virtualisation.containers.enable = true;
+  virtualisation = {
+    podman = {
+      enable = true;
 
-  #     # Create a `docker` alias for podman, to use it as a drop-in replacement
-  #     dockerCompat = true;
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = true;
+      dockerSocket.enable = true;
 
-  #     # Required for containers under podman-compose to be able to talk to each other.
-  #     defaultNetwork.settings.dns_enabled = true;
-  #   };
-  # };
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
