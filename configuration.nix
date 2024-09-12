@@ -96,7 +96,7 @@
   users.users.wojtek = {
     isNormalUser = true;
     description = "Wojtek";
-    extraGroups = [ "networkmanager" "wheel" "docker" "podman" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       kdePackages.kate
       thunderbird
@@ -162,10 +162,7 @@
     # plasma-browser-integration #idk
     
     dive # look into docker image layers
-    podman-tui # status of containers in the terminal
     docker-compose # start group of containers for dev
-    # podman-compose # start group of containers for dev
-    # podman-desktop # not worky
   ];
 
   fonts.packages = with pkgs; [
@@ -173,21 +170,7 @@
   ];
 
   # Kontenaryzacja
-  # virtualisation.docker.enable = true;
-  # Enable common container config files in /etc/containers
-  virtualisation.containers.enable = true;
-  virtualisation = {
-    podman = {
-      enable = true;
-
-      # Create a `docker` alias for podman, to use it as a drop-in replacement
-      dockerCompat = true;
-      dockerSocket.enable = true;
-
-      # Required for containers under podman-compose to be able to talk to each other.
-      defaultNetwork.settings.dns_enabled = true;
-    };
-  };
+  virtualisation.docker.enable = true;
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
