@@ -96,7 +96,7 @@
   users.users.wojtek = {
     isNormalUser = true;
     description = "Wojtek";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "podman" ];
     packages = with pkgs; [
       kdePackages.kate
       thunderbird
