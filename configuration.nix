@@ -141,7 +141,7 @@
     devbox
     jq
     # git in home.nix
-    libsecret
+    # libsecret
     fastfetch #neofetch
     pkgs.gnome-software
     tldr # man
@@ -163,7 +163,10 @@
     
     dive # look into docker image layers
     docker-compose # start group of containers for dev
+    # gitFull
   ];
+
+  programs.ssh.startAgent = true; #!! working vscode clone to container (after ssh-add)
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "Hack" "JetBrainsMono" ]; })
@@ -215,4 +218,8 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  nix.extraOptions = ''
+    warn-dirty = false
+  '';
 }

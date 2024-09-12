@@ -7,7 +7,7 @@ let
       tree = "ls --tree";
       grep = "ripgrep";
       gzip = "pigz";
-      bat = "cat";
+      # cat = "bat";
       cd = "z";
       cdi = "zi";
       df = "dust";
@@ -102,6 +102,10 @@ in
     enable = true;
     userName  = "VV01T3K";
     userEmail = "wojteks.access@gmail.com";
+    extraConfig = {
+      # init.defaultBranch = "main";
+
+    };
   };
 
   # home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;
