@@ -104,6 +104,11 @@ in
     userEmail = "wojteks.access@gmail.com";
     extraConfig = {
       # init.defaultBranch = "main";
+
+      # Sign all commits using ssh key
+      commit.gpgsign = true;
+      gpg.format = "ssh";
+      user.signingkey = "$HOME/.ssh/id_ed25519.pub";
     };
   };
 
