@@ -104,8 +104,13 @@ in
     userEmail = "wojteks.access@gmail.com";
     extraConfig = {
       # init.defaultBranch = "main";
-
     };
+  };
+
+  #!! fix for vscode clone to container (ssh forwarding)
+  programs.ssh = {
+    enable = true;
+    addKeysToAgent = "yes";
   };
 
   # home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;
