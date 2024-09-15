@@ -106,9 +106,9 @@ in
       # init.defaultBranch = "main";
 
       # Sign all commits using ssh key
-      commit.gpgsign = true;
-      gpg.format = "ssh";
-      user.signingkey = "$HOME/.ssh/id_ed25519.pub";
+      # commit.gpgsign = true;
+      # gpg.format = "ssh";
+      # user.signingkey = "$HOME/.ssh/id_ed25519.pub";
     };
   };
 
