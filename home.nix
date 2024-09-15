@@ -5,7 +5,7 @@ let
       ls = "eza --icons=auto";
       ll = "ls --long";
       tree = "ls --tree";
-      grep = "ripgrep";
+      # grep = "ripgrep"; # rg is shortcut for ripgrep
       gzip = "pigz";
       # cat = "bat";
       cd = "z";
@@ -46,9 +46,11 @@ in
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
+    (pkgs.writeShellScriptBin "rebuild" ''
+      cd ~/.dotfiles/
+      sudo nixos-rebuild switch --flake .
+      home-manager switch --flake .
+    '')
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -100,8 +102,10 @@ in
 
   #!! git signing with ssh key
   # https://jeppesen.io/git-commit-sign-nix-home-manager-ssh/
-  home.file.".ssh/allowed_signers".text =
-    "* ${builtins.readFile /home/wojtek/.ssh/id_ed25519.pub}";
+  # ====Uncomment to repair signing commits with ssh key====
+  # home.file.".ssh/allowed_signers".text =
+  #   "* ${builtins.readFile /home/wojtek/.ssh/id_ed25519.pub}";
+  # ========================================================
   programs.git = {
     enable = true;
     userName  = "VV01T3K";

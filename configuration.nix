@@ -160,8 +160,8 @@
     dust # df
     thefuck # da fuck
     # plasma-browser-integration #idk
-    
-    dive # look into docker image layers
+    fd # find
+    # dive # look into docker image layers
     docker-compose # start group of containers for dev
     # gitFull
   ];
