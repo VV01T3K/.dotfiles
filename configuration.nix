@@ -166,7 +166,7 @@
     # gitFull
   ];
 
-  programs.ssh.startAgent = true; #!! fix for vscode clone to container (ssh forwarding)
+  # programs.ssh.startAgent = true; #!! fix for vscode clone to container (ssh forwarding)
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "Hack" "JetBrainsMono" ]; })

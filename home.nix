@@ -103,8 +103,8 @@ in
   #!! git signing with ssh key
   # https://jeppesen.io/git-commit-sign-nix-home-manager-ssh/
   # ====Uncomment to repair signing commits with ssh key====
-  home.file.".ssh/allowed_signers".text =
-    "* ${builtins.readFile /home/wojtek/.ssh/id_ed25519.pub}";
+  # home.file.".ssh/allowed_signers".text =
+  #   "* ${builtins.readFile /home/wojtek/.ssh/id_ed25519.pub}";
   # ========================================================
   programs.git = {
     enable = true;
@@ -116,7 +116,7 @@ in
       # Sign all commits using ssh key
       commit.gpgsign = true;
       gpg.format = "ssh";
-      gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+      # gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
       user.signingkey = "~/.ssh/id_ed25519.pub";
     };
   };
@@ -124,6 +124,7 @@ in
   #!! fix for vscode clone to container (ssh forwarding)
   programs.ssh = {
     enable = true;
+    forwardAgent = true;
     addKeysToAgent = "yes";
   };
 
