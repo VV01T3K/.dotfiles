@@ -10,7 +10,7 @@ let
       # cat = "bat";
       cd = "z";
       cdi = "zi";
-      df = "dust";
+      # df = "dust";
       cl = "clear";
       ".." = "cd ..";
     };
@@ -94,16 +94,7 @@ in
     enable = true;
     shellAliases = myAliases;
     # bashrcExtra = ''
-    #   if [ -z "$SSH_AUTH_SOCK" ]; then
-    #     # Check for a currently running instance of the agent
-    #     RUNNING_AGENT="`ps -ax | grep 'ssh-agent -s' | grep -v grep | wc -l | tr -d '[:space:]'`"
-    #     if [ "$RUNNING_AGENT" = "0" ]; then
-    #           # Launch a new instance of the agent
-    #           ssh-agent -s &> $HOME/.ssh/ssh-agent
-    #     fi
-    #     eval `cat $HOME/.ssh/ssh-agent` > /dev/null
-    #     ssh-add $HOME/.ssh/id_ed25519.pub 2> /dev/null
-    #   fi
+    #   # Add your own customizations to the shell environment here.
     # '';
   };
   programs.zsh = {
@@ -112,28 +103,16 @@ in
   };
   programs.zoxide.enable = true;
 
-  #!! git signing with ssh key
-  # https://jeppesen.io/git-commit-sign-nix-home-manager-ssh/
-  # ====Uncomment to repair signing commits with ssh key====
-  # home.file.".ssh/allowed_signers".text =
-  #   "* ${builtins.readFile /home/wojtek/.ssh/id_ed25519.pub}";
-  # ========================================================
   programs.git = {
     enable = true;
     userName  = "VV01T3K";
     userEmail = "wojteks.access@gmail.com";
     # extraConfig = {
     #   # init.defaultBranch = "main";
-
-    #   # Sign all commits using ssh key
-    #   # commit.gpgsign = true;
-    #   # gpg.format = "ssh";
-    #   # gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
-    #   # user.signingkey = "~/.ssh/id_ed25519.pub";
     # };
   };
 
-  #!! fix for vscode clone to container (ssh forwarding)
+  #!! fix for vscode (and etc) clone to container (ssh forwarding)
   programs.ssh = {
     enable = true;
     forwardAgent = true;

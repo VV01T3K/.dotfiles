@@ -164,9 +164,10 @@
     # dive # look into docker image layers
     docker-compose # start group of containers for dev
     # gitFull
+    wineWowPackages.waylandFull
   ];
 
-  programs.ssh.startAgent = true; #!! fix for vscode clone to container (ssh forwarding)
+  programs.ssh.startAgent = true; #!! fix for vscode (and etc) clone to container (ssh forwarding)
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "Hack" "JetBrainsMono" ]; })
