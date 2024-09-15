@@ -98,6 +98,10 @@ in
   };
   programs.zoxide.enable = true;
 
+  #!! git signing with ssh key
+  # https://jeppesen.io/git-commit-sign-nix-home-manager-ssh/
+  home.file.".ssh/allowed_signers".text =
+    "* ${builtins.readFile /home/wojtek/.ssh/id_ed25519.pub}";
   programs.git = {
     enable = true;
     userName  = "VV01T3K";
@@ -108,6 +112,7 @@ in
       # Sign all commits using ssh key
       commit.gpgsign = true;
       gpg.format = "ssh";
+      gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
       user.signingkey = "~/.ssh/id_ed25519.pub";
     };
   };
