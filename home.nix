@@ -93,6 +93,18 @@ in
   programs.bash = {
     enable = true;
     shellAliases = myAliases;
+    bashrcExtra = ''
+      if [ -z "$SSH_AUTH_SOCK" ]; then
+        # Check for a currently running instance of the agent
+        RUNNING_AGENT="`ps -ax | grep 'ssh-agent -s' | grep -v grep | wc -l | tr -d '[:space:]'`"
+        if [ "$RUNNING_AGENT" = "0" ]; then
+              # Launch a new instance of the agent
+              ssh-agent -s &> $HOME/.ssh/ssh-agent
+        fi
+        eval `cat $HOME/.ssh/ssh-agent` > /dev/null
+        ssh-add $HOME/.ssh/id_ed25519.pub 2> /dev/null
+      fi
+    '';
   };
   programs.zsh = {
     enable = true;
@@ -110,15 +122,15 @@ in
     enable = true;
     userName  = "VV01T3K";
     userEmail = "wojteks.access@gmail.com";
-    extraConfig = {
-      # init.defaultBranch = "main";
+    # extraConfig = {
+    #   # init.defaultBranch = "main";
 
-      # Sign all commits using ssh key
-      commit.gpgsign = true;
-      gpg.format = "ssh";
-      # gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
-      user.signingkey = "~/.ssh/id_ed25519.pub";
-    };
+    #   # Sign all commits using ssh key
+    #   # commit.gpgsign = true;
+    #   # gpg.format = "ssh";
+    #   # gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+    #   # user.signingkey = "~/.ssh/id_ed25519.pub";
+    # };
   };
 
   #!! fix for vscode clone to container (ssh forwarding)
