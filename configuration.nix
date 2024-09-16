@@ -16,9 +16,9 @@
   
 
   # # Shells
-  # environment.shells = with pkgs; [ bash zsh fish ];
-  # users.defaultUserShell = pkgs.zsh;
-  # programs.zsh.enable = true;
+  environment.shells = with pkgs; [ bash zsh fish nushell ];
+  users.defaultUserShell = pkgs.zsh;
+  programs.zsh.enable = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -111,6 +111,7 @@
       zed-editor
       warp-terminal
       jdk17
+      python3
     ];
   };
 
@@ -149,7 +150,7 @@
     ripgrep # grep
     pigz # gzip
     btop # top
-    kitty # terminal
+    # kitty # terminal
     tmux # windowing
     bat # cat
     fzf # fuzzy find
@@ -163,7 +164,7 @@
     fd # find
     # dive # look into docker image layers
     docker-compose # start group of containers for dev
-    # gitFull
+    starship
     wineWowPackages.waylandFull
   ];
 

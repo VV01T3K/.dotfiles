@@ -88,6 +88,7 @@ in
     # EDITOR = "emacs";
     # EZA_ICON_SPACING = "10";
     # EZA_ICONS_AUTO
+    TEST = "bajojajo";
   };
 
   programs.bash = {
@@ -97,11 +98,33 @@ in
     #   # Add your own customizations to the shell environment here.
     # '';
   };
+
+  programs.zoxide.enable = true;
+
   programs.zsh = {
     enable = true;
     shellAliases = myAliases;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
+    oh-my-zsh = {
+      enable = true;
+      theme = "robbyrussell";
+      plugins = [
+        "sudo" # the sudo plugin provides many aliases and a few useful functions.
+        "git" # the git plugin provides many aliases and a few useful functions.
+        "history" # the history plugin provides many aliases and a few useful functions.
+        "docker" # the docker plugin provides many aliases and a few useful functions.
+        # "golang" # the golang plugin provides many aliases and a few useful functions.
+        # "starship" # the starship plugin provides many aliases and a few useful functions.
+        # "zoxide" # the zoxide plugin provides many aliases and a few useful functions.
+        # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/common-aliases
+        "aliases" # the aliases plugin provides many aliases and a few useful functions.
+     
+      ];
+    };
   };
-  programs.zoxide.enable = true;
 
   programs.git = {
     enable = true;
