@@ -88,7 +88,7 @@ in
     # EDITOR = "emacs";
     # EZA_ICON_SPACING = "10";
     # EZA_ICONS_AUTO
-    TEST = "bajojajo";
+    # NIX_BUILD_SHELL = "zsh";
   };
 
   programs.bash = {
@@ -121,7 +121,6 @@ in
         # "zoxide" # the zoxide plugin provides many aliases and a few useful functions.
         # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/common-aliases
         "aliases" # the aliases plugin provides many aliases and a few useful functions.
-     
       ];
     };
   };
