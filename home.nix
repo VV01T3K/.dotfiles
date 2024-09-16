@@ -100,6 +100,12 @@ in
   };
 
   programs.zoxide.enable = true;
+  programs.thefuck = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+  };
+
 
   programs.zsh = {
     enable = true;
@@ -118,7 +124,6 @@ in
         "docker" # the docker plugin provides many aliases and a few useful functions.
         # "golang" # the golang plugin provides many aliases and a few useful functions.
         # "starship" # the starship plugin provides many aliases and a few useful functions.
-        # "zoxide" # the zoxide plugin provides many aliases and a few useful functions.
         # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/common-aliases
         "aliases" # the aliases plugin provides many aliases and a few useful functions.
       ];
