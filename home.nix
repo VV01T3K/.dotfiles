@@ -93,7 +93,7 @@ in
     # or export DIRENV_LOG_FORMAT=$'\033[2mdirenv: %s\033[0m'
   };
 
-  programs.direnv = {
+  programs.direnv = { # maybe also lorri
     enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;

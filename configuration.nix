@@ -158,7 +158,7 @@
     entr # auto run
     atuin # history
     powertop # power managment
-    dust # df
+    dust # du
     thefuck # da fuck
     # plasma-browser-integration #idk
     fd # find
@@ -166,6 +166,9 @@
     docker-compose # start group of containers for dev
     starship
     wineWowPackages.waylandFull
+    duf # df
+    procs # ps
+    # isolate # sandbox built to safely run untrusted executables dont know if gud
   ];
 
   programs.ssh.startAgent = true; #!! fix for vscode (and etc) clone to container (ssh forwarding)
