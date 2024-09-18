@@ -132,7 +132,8 @@ in
         # "starship" # the starship plugin provides many aliases and a few useful functions.
         # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/common-aliases
         "aliases" # the aliases plugin provides many aliases and a few useful functions.
-        "direnv" # the direnv plugin provides many aliases and a few useful functions.
+        #for direnv https://shivamarora.medium.com/a-guide-to-manage-your-environment-variables-in-a-better-way-using-direnv-2c1cd475c8e
+        "direnv" # the direnv plugin provides many aliases and a few useful functions. (direnv allow) to load/unload environment variables
       ];
     };
 
