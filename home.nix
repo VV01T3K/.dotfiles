@@ -91,6 +91,13 @@ in
     # NIX_BUILD_SHELL = "zsh";
   };
 
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   programs.bash = {
     enable = true;
     shellAliases = myAliases;
@@ -105,7 +112,6 @@ in
     enableBashIntegration = true;
     enableZshIntegration = true;
   };
-
 
   programs.zsh = {
     enable = true;
@@ -126,6 +132,7 @@ in
         # "starship" # the starship plugin provides many aliases and a few useful functions.
         # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/common-aliases
         "aliases" # the aliases plugin provides many aliases and a few useful functions.
+        "direnv" # the direnv plugin provides many aliases and a few useful functions.
       ];
     };
 
