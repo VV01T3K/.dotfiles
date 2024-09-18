@@ -91,6 +91,8 @@ in
     # NIX_BUILD_SHELL = "zsh";
     DIRENV_LOG_FORMAT = "";
     # or export DIRENV_LOG_FORMAT=$'\033[2mdirenv: %s\033[0m'
+    YSU_MESSAGE_POSITION="after";
+    YSU_MODE="ALL";
   };
 
   programs.direnv = { # maybe also lorri
@@ -122,6 +124,8 @@ in
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
+    # maybe i should use zplug instead
+
     oh-my-zsh = {
       enable = true;
       theme = "robbyrussell";
@@ -132,14 +136,34 @@ in
         "docker" # the docker plugin provides many aliases and a few useful functions.
         # "golang" # the golang plugin provides many aliases and a few useful functions.
         # "starship" # the starship plugin provides many aliases and a few useful functions.
-        # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/common-aliases
-        "aliases" # the aliases plugin provides many aliases and a few useful functions.
+        "common-aliases" # This plugin creates helpful shortcut aliases for many commonly used commands.
+        "aliases" # als # the aliases plugin provides many aliases and a few useful functions.
         #for direnv https://shivamarora.medium.com/a-guide-to-manage-your-environment-variables-in-a-better-way-using-direnv-2c1cd475c8e
         "direnv" # the direnv plugin provides many aliases and a few useful functions. (direnv allow) to load/unload environment variables
       ];
     };
 
     plugins = [
+      {
+        name = "zsh-history-substring-search";
+        file = "zsh-history-substring-search.plugin.zsh";
+        src = pkgs.fetchFromGitHub {
+          owner = "zsh-users";
+          repo = "zsh-history-substring-search";
+          rev = "v1.1.0";
+          sha256 = "sha256-GSEvgvgWi1rrsgikTzDXokHTROoyPRlU0FVpAoEmXG4=";
+        };
+      }
+      {
+        name = "you-should-use";
+        file = "you-should-use.plugin.zsh";
+        src = pkgs.fetchFromGitHub {
+          owner = "MichaelAquilina";
+          repo = "zsh-you-should-use";
+          rev = "1.9.0";
+          sha256 = "sha256-+3iAmWXSsc4OhFZqAMTwOL7AAHBp5ZtGGtvqCnEOYc0=";
+        };
+      }
       {
         name = "zsh-nix-shell";
         file = "nix-shell.plugin.zsh";
