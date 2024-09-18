@@ -89,6 +89,8 @@ in
     # EZA_ICON_SPACING = "10";
     # EZA_ICONS_AUTO
     # NIX_BUILD_SHELL = "zsh";
+    DIRENV_LOG_FORMAT = "";
+    # or export DIRENV_LOG_FORMAT=$'\033[2mdirenv: %s\033[0m'
   };
 
   programs.direnv = {

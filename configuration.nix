@@ -150,7 +150,7 @@
     ripgrep # grep
     pigz # gzip
     btop # top
-    # kitty # terminal
+    kitty # terminal
     tmux # windowing
     bat # cat
     fzf # fuzzy find
