@@ -47,10 +47,22 @@ in
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
     (pkgs.writeShellScriptBin "rebuild" ''
-      cd ~/.dotfiles/
-      sudo nixos-rebuild switch --flake .
-      home-manager switch --flake .
+      nh os switch
+      nh home switch
     '')
+    (pkgs.writeShellScriptBin "update" ''
+      nh os switch --update
+      nh home switch --update
+    '')
+    (pkgs.writeShellScriptBin "home" ''
+      nh home switch
+    '')
+    (pkgs.writeShellScriptBin "clean" ''
+      nh clean all
+      nix-store --optimise
+      echo "System garbage collection done."
+    '')
+
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -93,6 +105,7 @@ in
     # or export DIRENV_LOG_FORMAT=$'\033[2mdirenv: %s\033[0m'
     YSU_MESSAGE_POSITION="after";
     YSU_MODE="ALL";
+    # FLAKE = "/home/wojtek/.dotfiles";
   };
 
   programs.direnv = { # maybe also lorri
@@ -144,16 +157,16 @@ in
     };
 
     plugins = [
-      {
-        name = "zsh-history-substring-search";
-        file = "zsh-history-substring-search.plugin.zsh";
-        src = pkgs.fetchFromGitHub {
-          owner = "zsh-users";
-          repo = "zsh-history-substring-search";
-          rev = "v1.1.0";
-          sha256 = "sha256-GSEvgvgWi1rrsgikTzDXokHTROoyPRlU0FVpAoEmXG4=";
-        };
-      }
+      # {
+      #   name = "zsh-history-substring-search";
+      #   file = "zsh-history-substring-search.plugin.zsh";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "zsh-users";
+      #     repo = "zsh-history-substring-search";
+      #     rev = "v1.1.0";
+      #     sha256 = "sha256-GSEvgvgWi1rrsgikTzDXokHTROoyPRlU0FVpAoEmXG4=";
+      #   };
+      # }
       {
         name = "you-should-use";
         file = "you-should-use.plugin.zsh";

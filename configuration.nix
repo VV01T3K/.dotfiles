@@ -77,7 +77,7 @@
   console.keyMap = "pl2";
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  # services.printing.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -133,9 +133,20 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.dates = "weekly";
+    clean.extraArgs = "--keep-since 7d --keep 3";
+    flake = "/home/wojtek/.dotfiles";
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # nh # nix helper
+    # nix-output-monitor # monitor nix builds
+    # nvd # nix version manager (diffing)
     vim
     neovim
     wget
