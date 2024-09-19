@@ -177,7 +177,7 @@
     fd # find
     # dive # look into docker image layers
     docker-compose # start group of containers for dev
-    starship
+    # starship
     wineWowPackages.waylandFull
     duf # df
     procs # ps
@@ -234,6 +234,20 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
+
+  system.autoUpgrade = {
+    enable = true;
+    allowReboot = true;
+    flake = "/home/wojtek/.dotfiles";
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      # "--commit-lock-file"
+      "-L" # print build logs
+    ];
+    dates = "02:00";
+    randomizedDelaySec = "45min";
+  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
