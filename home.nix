@@ -13,6 +13,7 @@ let
       # df = "dust";
       cl = "clear";
       ".." = "cd ..";
+      f = "fuck";
     };
 in
 {
@@ -62,8 +63,11 @@ in
     '')
     (pkgs.writeShellScriptBin "clean" ''
       nh clean all
-      nix-store --optimise
       echo "System garbage collection done."
+      nix-store --optimise
+      echo "Store optimisation done."
+      du -sh /nix/store
+      df -h
     '')
 
   ];
@@ -126,6 +130,15 @@ in
     # '';
   };
 
+  programs.bash.initExtra = ''
+    export MANPAGER='sh -c "col -bx | bat -l man -p"'
+    export MANROFFOPT="-c";
+  ''; 
+  programs.zsh.initExtra = ''
+    export MANPAGER='sh -c "col -bx | bat -l man -p"'
+    export MANROFFOPT="-c";
+  ''; 
+
   programs.zoxide.enable = true;
   programs.thefuck = {
     enable = true;
@@ -156,6 +169,7 @@ in
         "aliases" # als # the aliases plugin provides many aliases and a few useful functions.
         #for direnv https://shivamarora.medium.com/a-guide-to-manage-your-environment-variables-in-a-better-way-using-direnv-2c1cd475c8e
         "direnv" # the direnv plugin provides many aliases and a few useful functions. (direnv allow) to load/unload environment variables
+        "colored-man-pages" # the colored
       ];
     };
 
@@ -214,6 +228,7 @@ in
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  
   services.home-manager.autoUpgrade = {
     enable = true;
     frequency = "weekly";

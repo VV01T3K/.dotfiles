@@ -141,9 +141,23 @@
     flake = "/home/wojtek/.dotfiles";
   };
 
+  documentation = {
+    dev.enable = true;
+    nixos.includeAllModules = true;                                         
+  };
+  documentation.man = {
+    generateCaches = true;
+    # In order to enable to mandoc man-db has to be disabled.
+    # man-db.enable = false;
+    # mandoc.enable = true;
+    man-db.enable = true;
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # man-pages
+    # man-pages-posix
     # nh # nix helper
     # nix-output-monitor # monitor nix builds
     # nvd # nix version manager (diffing)
