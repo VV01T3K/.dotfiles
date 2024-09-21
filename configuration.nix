@@ -196,6 +196,7 @@
     duf # df
     procs # ps
     # isolate # sandbox built to safely run untrusted executables dont know if gud
+    # devbox
   ];
 
   programs.ssh.startAgent = true; #!! fix for vscode (and etc) clone to container (ssh forwarding)

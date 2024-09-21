@@ -128,16 +128,11 @@ in
     # bashrcExtra = ''
     #   # Add your own customizations to the shell environment here.
     # '';
+    initExtra = ''
+      export MANPAGER='sh -c "col -bx | bat -l man -p"'
+      export MANROFFOPT="-c";
+    ''; 
   };
-
-  programs.bash.initExtra = ''
-    export MANPAGER='sh -c "col -bx | bat -l man -p"'
-    export MANROFFOPT="-c";
-  ''; 
-  programs.zsh.initExtra = ''
-    export MANPAGER='sh -c "col -bx | bat -l man -p"'
-    export MANROFFOPT="-c";
-  ''; 
 
   programs.zoxide.enable = true;
   programs.thefuck = {
@@ -153,7 +148,7 @@ in
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    # maybe i should use zplug instead
+    # maybe i should use zplug instead or smth similar
 
     oh-my-zsh = {
       enable = true;
