@@ -5,9 +5,10 @@
         nixpkgs.url = "nixpkgs/nixos-unstable";
         home-manager.url = "github:nix-community/home-manager";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
+        nix-flatpak.url = "github:gmodena/nix-flatpak";
     };
 
-    outputs = { self, nixpkgs, home-manager, ... }:
+    outputs = { self, nixpkgs, nix-flatpak, home-manager, ... }:
     let
         lib = nixpkgs.lib;
         system = "x86_64-linux";
@@ -16,7 +17,11 @@
         nixosConfigurations = {
             nixos = lib.nixosSystem {
                 inherit system;
-                modules = [ ./configuration.nix ];
+                modules = [
+                    nix-flatpak.nixosModules.nix-flatpak
+
+                    ./configuration.nix
+                ];
             };
         };
         homeConfigurations = {

@@ -54,6 +54,7 @@ in
     (pkgs.writeShellScriptBin "update" ''
       nh os switch --update
       nh home switch --update
+      flatpak update
     '')
     (pkgs.writeShellScriptBin "home" ''
       nh home switch
@@ -64,8 +65,11 @@ in
     (pkgs.writeShellScriptBin "clean" ''
       nh clean all
       echo "System garbage collection done."
+      echo "Optimising"
       nix-store --optimise
+      nh clean all
       echo "Store optimisation done."
+      os
       du -sh /nix/store
       df -h
     '')
@@ -112,7 +116,7 @@ in
     # or export DIRENV_LOG_FORMAT=$'\033[2mdirenv: %s\033[0m'
     YSU_MESSAGE_POSITION="after";
     YSU_MODE="ALL";
-    # FLAKE = "/home/wojtek/.dotfiles";
+    FLAKE = "/home/wojtek/.dotfiles";
   };
 
   programs.direnv = { # maybe also lorri

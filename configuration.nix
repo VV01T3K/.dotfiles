@@ -61,10 +61,10 @@
   services.xserver.enable = false; #default true
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
   programs.dconf.enable = true;
+  services.desktopManager.plasma6.enable = true;
   services.displayManager.defaultSession = "plasma";
+  services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
 
   # Configure keymap in X11
@@ -107,25 +107,40 @@
       #vesktop
       discord
       onlyoffice-bin
-      go
       spotify
       whatsapp-for-linux
       zed-editor
       warp-terminal
-      jdk17
-      python3
+      go
+      # devbox
+      # jdk17
     ];
   };
 
   services.flatpak.enable = true;
-
-
-  programs.steam = {
+  services.flatpak.uninstallUnmanaged = true;
+  services.flatpak.update.auto = {
     enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    onCalendar = "weekly"; # Default value
   };
+  # also possible to use flathub-beta
+  # services.flatpak.remotes = lib.mkOptionDefault [{
+  #   name = "flathub-beta";
+  #   location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
+  # }];
+  # flatpak search bottles --> com.usebottles.bottles
+  services.flatpak.packages = [
+    "io.podman_desktop.PodmanDesktop"
+    "com.usebottles.bottles"
+  ];
+
+
+  # programs.steam = {
+  #   enable = true;
+  #   remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  #   dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  #   localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  # };
 
   # Install firefox.
   # programs.firefox.enable = false;
@@ -156,8 +171,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # man-pages
-    # man-pages-posix
+    (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
+      [General]
+      background=${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Elarun/contents/images/2560x1600.png
+    '')
+    man-pages
+    man-pages-posix
     # nh # nix helper
     # nix-output-monitor # monitor nix builds
     # nvd # nix version manager (diffing)
@@ -166,12 +185,9 @@
     wget
     xsettingsd # for partial scaling
     xorg.xrdb # for partial scaling
-    devbox
     jq
     # git in home.nix
-    # libsecret
     fastfetch #neofetch
-    pkgs.gnome-software
     tldr # man
     eza # ls
     ripgrep # grep
@@ -196,7 +212,7 @@
     duf # df
     procs # ps
     # isolate # sandbox built to safely run untrusted executables dont know if gud
-    # devbox
+    python3
   ];
 
   programs.ssh.startAgent = true; #!! fix for vscode (and etc) clone to container (ssh forwarding)
