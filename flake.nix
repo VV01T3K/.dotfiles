@@ -2,13 +2,20 @@
     description = "My first flake";
 
     inputs = {
-        nixpkgs.url = "nixpkgs/nixos-unstable";
-        home-manager.url = "github:nix-community/home-manager";
-        home-manager.inputs.nixpkgs.follows = "nixpkgs";
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+        home-manager = {
+            url = "github:nix-community/home-manager";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+        plasma-manager = {
+            url = "github:nix-community/plasma-manager";
+            inputs.nixpkgs.follows = "nixpkgs";
+            inputs.home-manager.follows = "home-manager";
+        };
         nix-flatpak.url = "github:gmodena/nix-flatpak";
     };
 
-    outputs = { self, nixpkgs, nix-flatpak, home-manager, ... }:
+    outputs = { self, nixpkgs, nix-flatpak, home-manager, plasma-manager, ... }:
     let
         lib = nixpkgs.lib;
         system = "x86_64-linux";
@@ -27,7 +34,11 @@
         homeConfigurations = {
             wojtek = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
-                modules = [ ./home.nix ];
+                modules = [ 
+                    plasma-manager.homeManagerModules.plasma-manager
+
+                    ./home.nix
+                ];
             };
         };
     };

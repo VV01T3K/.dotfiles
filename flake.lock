@@ -45,16 +45,41 @@
         "type": "github"
       },
       "original": {
-        "id": "nixpkgs",
+        "owner": "NixOS",
         "ref": "nixos-unstable",
-        "type": "indirect"
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "plasma-manager": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1726955367,
+        "narHash": "sha256-+RNT92e6I4s4q/SLdzlMrPQrxalOmNwnEt6zcYo4j84=",
+        "owner": "nix-community",
+        "repo": "plasma-manager",
+        "rev": "7fb80fea2373c3cc9f05a84204ad0b3233464b17",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "plasma-manager",
+        "type": "github"
       }
     },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nix-flatpak": "nix-flatpak",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "plasma-manager": "plasma-manager"
       }
     }
   },

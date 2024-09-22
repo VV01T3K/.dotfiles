@@ -143,7 +143,7 @@
   # };
 
   # Install firefox.
-  # programs.firefox.enable = false;
+  programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

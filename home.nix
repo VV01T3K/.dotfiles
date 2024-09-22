@@ -225,6 +225,27 @@ in
 
   # home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;
 
+  programs = {
+    plasma = {
+      enable = true;
+      spectacle = {
+        shortcuts = {
+          captureRectangularRegion = "Meta+Shift+S";
+        };
+      };
+    };
+  };
+
+  programs.konsole = {
+    enable = true;
+    profiles = {
+      majn = {
+        colorScheme = "WhiteOnBlack";
+      };
+    };
+    defaultProfile = "majn";
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   
