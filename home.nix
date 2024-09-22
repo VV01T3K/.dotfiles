@@ -256,8 +256,7 @@ in
       cursor.theme = "Breeze";
       iconTheme = "kora";
       theme = "Carl";
-      wallpaper="${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Kay/contents/images/1080x1920.png";
-      # wallpaper.image = "/home/wojtek/.dotfiles/OWL_DESKTOP.png";
+      wallpaper = "/home/wojtek/.dotfiles/OWL_DESKTOP.png";
       windowDecorations = {
         library = "org.kde.kwin.aurorae";
         theme = "__aurorae__svg__WillowDarkBlur";
