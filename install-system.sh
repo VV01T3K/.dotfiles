@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo "Don't forget to set Carl Theme and Willow Window Borders in KDE settings."
+read -n 1 -s
+
 # change to unstable
 
 sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos
