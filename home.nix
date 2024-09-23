@@ -14,6 +14,8 @@ let
       cl = "clear";
       ".." = "cd ..";
       f = "fuck";
+      z- = "z -";
+      cd- = "z -";
     };
 in
 {
