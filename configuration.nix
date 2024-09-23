@@ -15,43 +15,6 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # boot.plymouth.enable = true;
-  # boot.plymouth.theme="breeze";
-  # boot.kernelParams = ["quiet"];
-  # boot.initrd.systemd.enable = true;
-
-  # Bootloader.
-  # boot.loader.systemd-boot.enable = true;
-  # boot.loader.efi.canTouchEfiVariables = true;
-
-  # boot.initrd.systemd.enable = true;
-  # boot = {
-
-  #   # https://discourse.nixos.org/t/plymouth-not-working-need-a-bit-of-help/21826
-  #   plymouth = {
-  #     enable = true;
-  #     theme = "breeze";
-  #   };
-
-  #   # Enable "Silent Boot"
-  #   consoleLogLevel = 0;
-  #   # initrd.verbose = false;
-  #   kernelParams = [
-  #     "quiet"
-  #     "splash"
-  #     "boot.shell_on_fail"
-  #     "loglevel=3"
-  #     "rd.systemd.show_status=false"
-  #     "rd.udev.log_level=3"
-  #     "udev.log_priority=3"
-  #   ];
-    # Hide the OS choice for bootloaders.
-    # It's still possible to open the bootloader list by pressing any key
-    # It will just not appear on screen unless a key is pressed
-    # loader.timeout = 0;
-
-  # };
 
   # # Shells
   environment.shells = with pkgs; [ bash zsh fish nushell ];
@@ -59,7 +22,6 @@
   programs.zsh.enable = true;
 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -95,7 +57,7 @@
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   # services.xserver.enable = false; #default true
-  services.xserver.enable = true;
+  services.xserver.enable = false;
 
   # Enable the KDE Plasma Desktop Environment.
   programs.dconf.enable = true;
@@ -193,9 +155,6 @@
   #   localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   # };
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -207,27 +166,22 @@
     flake = "/home/wojtek/.dotfiles";
   };
 
-  documentation = {
-    dev.enable = true;
-    nixos.includeAllModules = true;                                         
-  };
-  documentation.man = {
-    generateCaches = true;
-    # In order to enable to mandoc man-db has to be disabled.
-    # man-db.enable = false;
-    # mandoc.enable = true;
-    man-db.enable = true;
-  };
+  # documentation = {
+  #   dev.enable = true;
+  #   nixos.includeAllModules = true;                                         
+  # };
+  # documentation.man = {
+  #   generateCaches = true;
+  #   man-db.enable = true;
+  # };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
       [General]
       background=${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Elarun/contents/images/2560x1600.png
     '')
-    man-pages
-    man-pages-posix
+    # man-pages
+    # man-pages-posix
     # nh # nix helper
     # nix-output-monitor # monitor nix builds
     # nvd # nix version manager (diffing)
@@ -237,7 +191,6 @@
     xsettingsd # for partial scaling
     xorg.xrdb # for partial scaling
     jq
-    # git in home.nix
     fastfetch #neofetch
     tldr # man
     eza # ls
@@ -256,7 +209,6 @@
     thefuck # da fuck
     # plasma-browser-integration #idk
     fd # find
-    # dive # look into docker image layers
     docker-compose # start group of containers for dev
     # starship
     wineWowPackages.waylandFull
@@ -264,8 +216,6 @@
     procs # ps
     # isolate # sandbox built to safely run untrusted executables dont know if gud
     python3
-    plymouth
-    breeze-plymouth
   ];
 
   programs.ssh.startAgent = true; #!! fix for vscode (and etc) clone to container (ssh forwarding)
@@ -276,12 +226,6 @@
 
   # Kontenaryzacja
   virtualisation.docker.enable = true;
-
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    # Add any missing dynamic libraries for unpackaged programs
-    # here, NOT in environment.systemPackages
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
