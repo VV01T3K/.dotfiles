@@ -12,10 +12,46 @@
       ./hardware-configuration.nix
     ];
 
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  # boot.plymouth.enable = true;
+  # boot.plymouth.theme="breeze";
+  # boot.kernelParams = ["quiet"];
+  # boot.initrd.systemd.enable = true;
+
   # Bootloader.
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
-  
+  # boot.loader.systemd-boot.enable = true;
+  # boot.loader.efi.canTouchEfiVariables = true;
+
+  # boot.initrd.systemd.enable = true;
+  # boot = {
+
+  #   # https://discourse.nixos.org/t/plymouth-not-working-need-a-bit-of-help/21826
+  #   plymouth = {
+  #     enable = true;
+  #     theme = "breeze";
+  #   };
+
+  #   # Enable "Silent Boot"
+  #   consoleLogLevel = 0;
+  #   # initrd.verbose = false;
+  #   kernelParams = [
+  #     "quiet"
+  #     "splash"
+  #     "boot.shell_on_fail"
+  #     "loglevel=3"
+  #     "rd.systemd.show_status=false"
+  #     "rd.udev.log_level=3"
+  #     "udev.log_priority=3"
+  #   ];
+    # Hide the OS choice for bootloaders.
+    # It's still possible to open the bootloader list by pressing any key
+    # It will just not appear on screen unless a key is pressed
+    # loader.timeout = 0;
+
+  # };
 
   # # Shells
   environment.shells = with pkgs; [ bash zsh fish nushell ];
@@ -58,7 +94,8 @@
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = false; #default true
+  # services.xserver.enable = false; #default true
+  services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
   programs.dconf.enable = true;
@@ -78,6 +115,20 @@
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
+
+  # Presumably better gpu drivers
+  hardware.graphics = { # hardware.opengl in 24.05
+    enable = true;
+    extraPackages = with pkgs; [
+      # your Open GL, Vulkan and VAAPI drivers
+      intel-vaapi-driver
+      intel-media-driver
+
+      vpl-gpu-rt # or intel-media-sdk for QSV
+    ];
+  };
+  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; }; # Force intel-media-driver
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -213,6 +264,8 @@
     procs # ps
     # isolate # sandbox built to safely run untrusted executables dont know if gud
     python3
+    plymouth
+    breeze-plymouth
   ];
 
   programs.ssh.startAgent = true; #!! fix for vscode (and etc) clone to container (ssh forwarding)

@@ -117,6 +117,7 @@ in
     YSU_MESSAGE_POSITION="after";
     YSU_MODE="ALL";
     FLAKE = "/home/wojtek/.dotfiles";
+    NIXOS_OZONE_WL = "1";
   };
 
   programs.direnv = { # maybe also lorri
@@ -239,6 +240,13 @@ in
         name = "Modern Mobile Mouse";
         vendorId = "045e";
         productId = "0827";
+        enable = true;
+        accelerationProfile = "none";
+      }
+      {
+        name = "SteelSeries SteelSeries Rival 3";
+        vendorId = "1038";
+        productId = "184c";
         enable = true;
         accelerationProfile = "none";
       }];
