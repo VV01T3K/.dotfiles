@@ -163,7 +163,7 @@
     clean.enable = true;
     clean.dates = "weekly";
     clean.extraArgs = "--keep-since 7d --keep 3";
-    flake = "/home/wojtek/.dotfiles";
+    # flake = "/home/wojtek/.dotfiles";
   };
 
   # documentation = {
