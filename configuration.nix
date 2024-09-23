@@ -221,7 +221,7 @@
   programs.ssh.startAgent = true; #!! fix for vscode (and etc) clone to container (ssh forwarding)
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "Hack" "JetBrainsMono" ]; })
+    (nerdfonts.override { fonts = [ "FiraCode" "Hack" "GeistMono" "JetBrainsMono" ]; })
   ];
 
   # Kontenaryzacja
