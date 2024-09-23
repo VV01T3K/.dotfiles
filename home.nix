@@ -174,6 +174,8 @@ in
     };
 
     plugins = [
+      # nix-prefetch-url https://github.com/zsh-users/zsh-history-substring-search/archive/v1.1.0.tar.gz --unpack
+
       # {
       #   name = "zsh-history-substring-search";
       #   file = "zsh-history-substring-search.plugin.zsh";
@@ -181,7 +183,7 @@ in
       #     owner = "zsh-users";
       #     repo = "zsh-history-substring-search";
       #     rev = "v1.1.0";
-      #     sha256 = "sha256-GSEvgvgWi1rrsgikTzDXokHTROoyPRlU0FVpAoEmXG4=";
+      #     sha256 = "0vjw4s0h4sams1a1jg9jx92d6hd2swq4z908nbmmm2qnz212y88r";
       #   };
       # }
       {
@@ -191,7 +193,7 @@ in
           owner = "MichaelAquilina";
           repo = "zsh-you-should-use";
           rev = "1.9.0";
-          sha256 = "sha256-+3iAmWXSsc4OhFZqAMTwOL7AAHBp5ZtGGtvqCnEOYc0=";
+          sha256 = "1kb11rqhmsnv3939prb9f00c1giqy3200sjnhh7cxcfjcncq0y7v";
         };
       }
       {
