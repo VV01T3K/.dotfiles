@@ -19,6 +19,9 @@ let
     };
 in
 {
+  imports = [
+    ./sh.nix
+  ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "wojtek";
@@ -129,17 +132,7 @@ in
     nix-direnv.enable = true;
   };
 
-  programs.bash = {
-    enable = true;
-    shellAliases = myAliases;
-    # bashrcExtra = ''
-    #   # Add your own customizations to the shell environment here.
-    # '';
-    initExtra = ''
-      export MANPAGER='sh -c "col -bx | bat -l man -p"'
-      export MANROFFOPT="-c";
-    ''; 
-  };
+
 
   programs.zoxide.enable = true;
   programs.thefuck = {
