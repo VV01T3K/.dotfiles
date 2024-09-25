@@ -30,7 +30,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
+  # services.blueman.enable = true; maybe better than default bluetooth from kde ??
   hardware.bluetooth.settings = {
     General = {
       Experimental = true;
