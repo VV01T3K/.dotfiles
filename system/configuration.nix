@@ -7,11 +7,14 @@
       ./hardware-configuration.nix
       ./common.nix
       ./flatpak.nix
+      ./more-pkgs.nix
+      ./virtualisation.nix
     ];
 
   # # Shells
   environment.shells = with pkgs; [ bash zsh fish nushell ];
   users.defaultUserShell = pkgs.zsh;
+  programs.zsh.enable = true;
 
   users.users.wojtek = {
     isNormalUser = true;
@@ -33,21 +36,9 @@
       [General]
       background=${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Elarun/contents/images/2560x1600.png
     '')
-    btop # top
-    entr # auto run
-    atuin # history
-    thefuck # da fuck
     wineWowPackages.waylandFull
-    docker-compose # start group of containers for dev
+    bottles
   ];
-
-  # Kontenaryzacja
-  virtualisation.docker = {
-    enable = true;
-    autoPrune.enable = true;
-  };
-  virtualisation.waydroid.enable = true;
-
 
   networking.firewall.enable = true;
   # Open ports in the firewall.

@@ -4,6 +4,7 @@
   imports = [
     ./sh.nix
     ./plasma.nix
+    ./more-pkgs.nix
   ];
   home.username = "wojtek";
   home.homeDirectory = "/home/wojtek";
@@ -16,14 +17,7 @@
       thunderbird
       brave
       vscode
-      #vesktop
       discord
-      onlyoffice-bin
-      spotify
-      whatsapp-for-linux
-      # warp-terminal
-      tmux # windowing
-      kitty # terminal
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
