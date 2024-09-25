@@ -30,6 +30,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
   hardware.bluetooth.settings = {
     General = {
       Experimental = true;
@@ -225,7 +226,11 @@
   ];
 
   # Kontenaryzacja
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    autoPrune.enable = true;
+  };
+  virtualisation.waydroid.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
