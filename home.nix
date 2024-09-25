@@ -56,7 +56,7 @@ in
     (pkgs.writeShellScriptBin "update" ''
       nh os switch --update
       nh home switch --update
-      flatpak update
+      flatpak update -y
     '')
     (pkgs.writeShellScriptBin "home" ''
       nh home switch
