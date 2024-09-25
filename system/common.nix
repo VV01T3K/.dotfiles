@@ -1,5 +1,3 @@
-# https://noogle.dev/ - website with nixos functions search
-
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
@@ -7,20 +5,41 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+
+  environment.systemPackages = with pkgs; [
+    # man-pages
+    # man-pages-posix
+    # nh # nix helper
+    # nix-output-monitor # monitor nix builds
+    # nvd # nix version manager (diffing)
+    vim
+    neovim
+    wget
+    xsettingsd # for partial scaling
+    xorg.xrdb # for partial scaling
+    jq
+    fastfetch #neofetch
+    tldr # man
+    eza # ls
+    ripgrep # grep
+    pigz # gzip
+    bat # cat
+    fzf # fuzzy find
+    zoxide # cd
+    fd # find
+    dust # du
+    duf # df
+    procs # ps
+    # plasma-browser-integration #idk
+    # starship
+    # powertop # power managment
+  ];
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # # Shells
-  environment.shells = with pkgs; [ bash zsh fish nushell ];
-  users.defaultUserShell = pkgs.zsh;
-  programs.zsh.enable = true;
-
   networking.hostName = "nixos"; # Define your hostname.
 
   # Configure network proxy if necessary
@@ -55,7 +74,7 @@
     LC_TIME = "pl_PL.UTF-8";
   };
 
-  # Enable the X11 windowing system.
+    # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   # services.xserver.enable = false; #default true
   services.xserver.enable = false;
@@ -109,129 +128,6 @@
     #media-session.enable = true;
   };
 
-  users.users.wojtek = {
-    isNormalUser = true;
-    description = "Wojtek";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = with pkgs; [
-      kdePackages.kate
-      thunderbird
-      brave
-      vscode
-      #vesktop
-      discord
-      onlyoffice-bin
-      spotify
-      whatsapp-for-linux
-      zed-editor
-      warp-terminal
-      go
-      # devbox
-      # jdk17
-    ];
-  };
-
-  services.flatpak.enable = true;
-  services.flatpak.uninstallUnmanaged = true;
-  services.flatpak.update.auto = {
-    enable = true;
-    onCalendar = "weekly"; # Default value
-  };
-  # also possible to use flathub-beta
-  # services.flatpak.remotes = lib.mkOptionDefault [{
-  #   name = "flathub-beta";
-  #   location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
-  # }];
-  # flatpak search bottles --> com.usebottles.bottles
-  services.flatpak.packages = [
-    "io.podman_desktop.PodmanDesktop"
-    "com.usebottles.bottles"
-  ];
-
-
-  # programs.steam = {
-  #   enable = true;
-  #   remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-  #   dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  #   localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-  # };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.dates = "weekly";
-    clean.extraArgs = "--keep-since 7d --keep 3";
-    # flake = "/home/wojtek/.dotfiles";
-  };
-
-  # documentation = {
-  #   dev.enable = true;
-  #   nixos.includeAllModules = true;                                         
-  # };
-  # documentation.man = {
-  #   generateCaches = true;
-  #   man-db.enable = true;
-  # };
-
-  environment.systemPackages = with pkgs; [
-    (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
-      [General]
-      background=${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Elarun/contents/images/2560x1600.png
-    '')
-    # man-pages
-    # man-pages-posix
-    # nh # nix helper
-    # nix-output-monitor # monitor nix builds
-    # nvd # nix version manager (diffing)
-    vim
-    neovim
-    wget
-    xsettingsd # for partial scaling
-    xorg.xrdb # for partial scaling
-    jq
-    fastfetch #neofetch
-    tldr # man
-    eza # ls
-    ripgrep # grep
-    pigz # gzip
-    btop # top
-    kitty # terminal
-    tmux # windowing
-    bat # cat
-    fzf # fuzzy find
-    zoxide # cd
-    entr # auto run
-    atuin # history
-    powertop # power managment
-    dust # du
-    thefuck # da fuck
-    # plasma-browser-integration #idk
-    fd # find
-    docker-compose # start group of containers for dev
-    # starship
-    wineWowPackages.waylandFull
-    duf # df
-    procs # ps
-    # isolate # sandbox built to safely run untrusted executables dont know if gud
-    # python3
-  ];
-
-  programs.ssh.startAgent = true; #!! fix for vscode (and etc) clone to container (ssh forwarding)
-
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "Hack" "GeistMono" "JetBrainsMono" ]; })
-  ];
-
-  # Kontenaryzacja
-  virtualisation.docker = {
-    enable = true;
-    autoPrune.enable = true;
-  };
-  virtualisation.waydroid.enable = true;
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -253,12 +149,14 @@
   #   };
   # };
 
-  networking.firewall.enable = true;
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 25565 ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+
+  programs.ssh.startAgent = true; #!! fix for vscode (and etc) clone to container (ssh forwarding)
+
+  # fonts.packages = with pkgs; [
+  #   (nerdfonts.override { fonts = [ "FiraCode" "Hack" "GeistMono" "JetBrainsMono" ]; })
+  # ];
+
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -267,6 +165,14 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
+
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.dates = "weekly";
+    clean.extraArgs = "--keep-since 7d --keep 3";
+    # flake = "/home/wojtek/.dotfiles";
+  };
 
   system.autoUpgrade = {
     enable = true;
@@ -287,4 +193,5 @@
   nix.extraOptions = ''
     warn-dirty = false
   '';
+
 }
