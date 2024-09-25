@@ -37,7 +37,7 @@
                 modules = [ 
                     plasma-manager.homeManagerModules.plasma-manager
 
-                    ./home.nix
+                    ./home/home.nix
                 ];
             };
         };
