@@ -3,6 +3,7 @@
 {
   imports = [
     ./sh.nix
+    ./scripts.nix
     ./plasma.nix
   ];
   home.username = userSettings.username;
