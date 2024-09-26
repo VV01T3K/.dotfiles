@@ -47,9 +47,12 @@
         theme = "__aurorae__svg__WillowDarkBlur";
       };
     };
+    kscreenlocker = {
+      appearance.wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Elarun/contents/images/2560x1600.png";
+    };
   };
 
-    programs.konsole = {
+  programs.konsole = {
     enable = true;
     profiles = {
         majn = {
