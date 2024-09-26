@@ -8,5 +8,6 @@
       # warp-terminal
       tmux # windowing
       kitty # terminal
+      trash-cli # trash
   ];
 }

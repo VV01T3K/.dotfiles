@@ -6,6 +6,7 @@
     [ # Include the results of the hardware scan.
       ./flatpak.nix
       ./virtualisation.nix
+      ./documentation.nix
     ];
 
   # # Shells
@@ -18,15 +19,6 @@
     description = "Wojtek";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
-
-  # documentation = {
-  #   dev.enable = true;
-  #   nixos.includeAllModules = true;                                         
-  # };
-  # documentation.man = {
-  #   generateCaches = true;
-  #   man-db.enable = true;
-  # };
 
   environment.systemPackages = with pkgs; [
     (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
