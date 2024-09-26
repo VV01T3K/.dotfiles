@@ -1,11 +1,12 @@
 {
     description = "My first advanced flake";
 
-    outputs = inputs@{ self, nixpkgs, nix-flatpak, home-manager, plasma-manager, ... }:
+    outputs = inputs@{ self, ... }:
     let
         lib = inputs.nixpkgs.lib;
         system = "x86_64-linux";
         pkgs = inputs.nixpkgs.legacyPackages.${system};
+        pkgs-stable = inputs.nixpkgs-stable.legacyPackages.${system};
 
         systemSettings = {
             system = system;
@@ -27,25 +28,27 @@
             nixos = lib.nixosSystem {
                 inherit system;
                 modules = [
-                    nix-flatpak.nixosModules.nix-flatpak
+                    inputs.nix-flatpak.nixosModules.nix-flatpak
                     ./system/configuration.nix
                 ];
                 specialArgs = {
                     inherit systemSettings;
                     inherit userSettings;
+                    inherit pkgs-stable; 
                 };
             };
         };
         homeConfigurations = {
-            wojtek = home-manager.lib.homeManagerConfiguration {
+            wojtek = inputs.home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
                 modules = [ 
-                    plasma-manager.homeManagerModules.plasma-manager
+                    inputs.plasma-manager.homeManagerModules.plasma-manager
                     ./user/home.nix
                 ];
                 extraSpecialArgs = {
                     inherit systemSettings;
                     inherit userSettings;
+                    inherit pkgs-stable;
                 };
             };
         };
@@ -53,6 +56,7 @@
 
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+        nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
         home-manager = {
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -60,7 +64,6 @@
         plasma-manager = {
             url = "github:nix-community/plasma-manager";
             inputs.nixpkgs.follows = "nixpkgs";
-            inputs.home-manager.follows = "home-manager";
         };
         nix-flatpak.url = "github:gmodena/nix-flatpak";
     };

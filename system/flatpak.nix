@@ -16,5 +16,6 @@
     services.flatpak.packages = [
       "io.podman_desktop.PodmanDesktop"
       # "com.usebottles.bottles"
+      # "com.obsproject.Studio"
   ];
 }
