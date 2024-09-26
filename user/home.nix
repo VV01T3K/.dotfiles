@@ -5,6 +5,7 @@
     ./sh.nix
     ./scripts.nix
     ./plasma.nix
+    ./git.nix
   ];
   home.username = userSettings.username;
   home.homeDirectory = "/home/${userSettings.username}";
@@ -41,22 +42,6 @@
     # NIX_BUILD_SHELL = "zsh";
     FLAKE = userSettings.dotfilesDir;
     NIXOS_OZONE_WL = "1";
-  };
-
-  programs.git = {
-    enable = true;
-    userName  = userSettings.nameGithub;
-    userEmail = userSettings.emailGithub;
-    # extraConfig = {
-    #   # init.defaultBranch = "main";
-    # };
-  };
-
-  #!! fix for vscode (and etc) clone to container (ssh forwarding)
-  programs.ssh = {
-    enable = true;
-    forwardAgent = true;
-    addKeysToAgent = "yes";
   };
 
   # home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;
