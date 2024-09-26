@@ -4,12 +4,10 @@
   imports = [
     ./sh.nix
     ./plasma.nix
-    ./more-pkgs.nix
   ];
   home.username = userSettings.username;
   home.homeDirectory = "/home/${userSettings.username}";
   home.stateVersion = "24.05"; # Please read the comment before changing.
-
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
       (nerdfonts.override { fonts = [ "FiraCode" "Hack" "GeistMono" "JetBrainsMono" ]; })

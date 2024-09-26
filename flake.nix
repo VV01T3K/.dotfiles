@@ -1,7 +1,7 @@
 {
     description = "My first advanced flake";
 
-    outputs = inputs@{ self, ... }:
+    outputs = { self, ... } @inputs:
     let
         lib = inputs.nixpkgs.lib;
         system = "x86_64-linux";
@@ -28,8 +28,11 @@
             nixos = lib.nixosSystem {
                 inherit system;
                 modules = [
-                    inputs.nix-flatpak.nixosModules.nix-flatpak
                     ./system/configuration.nix
+                    ./system/hardware-configuration.nix
+                    ./system/common.nix
+                    ./system/pkgs.nix
+                    inputs.nix-flatpak.nixosModules.nix-flatpak
                 ];
                 specialArgs = {
                     inherit systemSettings;
@@ -44,6 +47,7 @@
                 modules = [ 
                     inputs.plasma-manager.homeManagerModules.plasma-manager
                     ./user/home.nix
+                    ./user/pkgs.nix
                 ];
                 extraSpecialArgs = {
                     inherit systemSettings;

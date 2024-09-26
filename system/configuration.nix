@@ -4,10 +4,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./common.nix
       ./flatpak.nix
-      ./more-pkgs.nix
       ./virtualisation.nix
     ];
 
