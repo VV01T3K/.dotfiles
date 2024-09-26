@@ -36,8 +36,6 @@
       [General]
       background=${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Elarun/contents/images/2560x1600.png
     '')
-    wineWowPackages.waylandFull
-    bottles
   ];
 
   networking.firewall.enable = true;

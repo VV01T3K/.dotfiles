@@ -61,12 +61,18 @@ in
         ''; 
     };
 
-    programs.direnv = { # maybe also lorri
+  programs.direnv = { # maybe also lorri
     enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
   };
+  home.sessionVariables = {
+    DIRENV_LOG_FORMAT = "";
+    YSU_MESSAGE_POSITION="after";
+    YSU_MODE="ALL";
+  };
+
   programs.zoxide.enable = true;
   programs.thefuck = {
     enable = true;

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, userSettings, ... }:
 
 {
   imports = [
@@ -6,8 +6,8 @@
     ./plasma.nix
     ./more-pkgs.nix
   ];
-  home.username = "wojtek";
-  home.homeDirectory = "/home/wojtek";
+  home.username = userSettings.username;
+  home.homeDirectory = "/home/${userSettings.username}";
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
   nixpkgs.config.allowUnfree = true;
@@ -40,17 +40,14 @@
     # EZA_ICON_SPACING = "10";
     # EZA_ICONS_AUTO
     # NIX_BUILD_SHELL = "zsh";
-    DIRENV_LOG_FORMAT = "";
-    YSU_MESSAGE_POSITION="after";
-    YSU_MODE="ALL";
-    FLAKE = "/home/wojtek/.dotfiles";
+    FLAKE = userSettings.dotfilesDir;
     NIXOS_OZONE_WL = "1";
   };
 
   programs.git = {
     enable = true;
-    userName  = "VV01T3K";
-    userEmail = "wojteks.access@gmail.com";
+    userName  = userSettings.nameGithub;
+    userEmail = userSettings.emailGithub;
     # extraConfig = {
     #   # init.defaultBranch = "main";
     # };
