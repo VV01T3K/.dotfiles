@@ -18,6 +18,17 @@
       nh os switch
     '')
     (writeShellScriptBin "clean" ''
+      sudo nix-collect-garbage
+      sudo nix-collect-garbage -d
+      echo "System garbage collection done."
+      echo "Optimising"
+      nix-store --optimise
+      echo "Store optimisation done."
+      sudo nixos-rebuild boot --flake $FLAKE
+      du -sh /nix/store
+      # df -h
+    '')
+    (writeShellScriptBin "deep-clean" ''
       nh clean all
       echo "System garbage collection done."
       echo "Optimising"

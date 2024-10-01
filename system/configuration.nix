@@ -6,7 +6,7 @@
     [ # Include the results of the hardware scan.
       ./flatpak.nix
       ./virtualisation.nix
-      ./documentation.nix
+      # ./documentation.nix
     ];
 
   # # Shells
@@ -29,7 +29,7 @@
 
   networking.firewall.enable = true;
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 25565 ];
+  # networking.firewall.allowedTCPPorts = [ 25565 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
