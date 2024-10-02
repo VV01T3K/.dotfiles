@@ -28,7 +28,7 @@
       du -sh /nix/store
       # df -h
     '')
-    (writeShellScriptBin "deep-clean" ''
+    (writeShellScriptBin "clean-deep" ''
       nh clean all
       echo "System garbage collection done."
       echo "Optimising"

@@ -5,7 +5,7 @@
       onlyoffice-bin
       spotify
       whatsapp-for-linux
-      # warp-terminal
+      warp-terminal
       tmux # windowing
       kitty # terminal
       trash-cli # trash
