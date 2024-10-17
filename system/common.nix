@@ -59,6 +59,10 @@
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
+  # Fix for windows time slipping
+  # services.geoclue2.enable = true;
+  # services.localtimed.enable = true;
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
