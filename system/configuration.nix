@@ -3,12 +3,12 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      ./nix-lsp.nix
       ./flatpak.nix
       ./virtualisation.nix
       # ./documentation.nix
     ];
-
   # # Shells
   environment.shells = with pkgs; [ bash zsh fish nushell ];
   users.defaultUserShell = pkgs.zsh;
