@@ -1,0 +1,29 @@
+{
+    "nix.serverPath": "nixd",
+    "nix.enableLanguageServer": true,
+    "nix.serverSettings": {
+        "nixd": {
+            "formatting": {
+                "command": [
+                    "nixfmt"
+                ]
+            },
+            "nixpkgs": {
+                "expr": "import <nixpkgs> { }"
+            },
+            "options": {
+                "nixos": {
+                    "expr": "(builtins.getFlake (builtins.getEnv \"FLAKE\")).nixosConfigurations.nixos.options"
+                },
+                "home_manager": {
+                    "expr": "(builtins.getFlake (builtins.getEnv \"FLAKE\")).homeConfigurations.wojtek.options"
+                }
+            },
+            "diagnostic": {
+                "suppress": [
+                    "sema-extra-with"
+                ]
+            }
+        }
+    }
+}
