@@ -1,5 +1,5 @@
 # https://noogle.dev/ - website with nixos functions search
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -28,7 +28,7 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
       [General]
       background=${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Elarun/contents/images/2560x1600.png
