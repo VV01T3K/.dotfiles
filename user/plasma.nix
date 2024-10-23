@@ -12,29 +12,31 @@
     desktop.mouseActions.middleClick = null;
     input = {
       mice = [
-      {
-        name = "Modern Mobile Mouse";
-        vendorId = "045e";
-        productId = "0827";
-        enable = true;
-        accelerationProfile = "none";
-      }
-      {
-        name = "SteelSeries SteelSeries Rival 3";
-        vendorId = "1038";
-        productId = "184c";
-        enable = true;
-        accelerationProfile = "none";
-      }
+        {
+          name = "Modern Mobile Mouse";
+          vendorId = "045e";
+          productId = "0827";
+          enable = true;
+          accelerationProfile = "none";
+        }
+        {
+          name = "SteelSeries SteelSeries Rival 3";
+          vendorId = "1038";
+          productId = "184c";
+          enable = true;
+          accelerationProfile = "none";
+        }
       ];
-      touchpads = [{
-        name = "ASUE1307:00 04F3:3279 Touchpad";
-        productId = "3279";
-        vendorId = "04f3";
-        enable = true;
-        disableWhileTyping = true;
-        naturalScroll = true;
-      }];
+      touchpads = [
+        {
+          name = "ASUE1307:00 04F3:3279 Touchpad";
+          productId = "3279";
+          vendorId = "04f3";
+          enable = true;
+          disableWhileTyping = true;
+          naturalScroll = true;
+        }
+      ];
     };
     workspace = {
       # lookAndFeel = "Carl";
@@ -55,10 +57,10 @@
   programs.konsole = {
     enable = true;
     profiles = {
-        majn = {
+      majn = {
         colorScheme = "WhiteOnBlack";
-        };
+      };
     };
     defaultProfile = "majn";
-    };
+  };
 }

@@ -7,7 +7,7 @@
   ];
   documentation = {
     dev.enable = true;
-    nixos.includeAllModules = true;                                         
+    nixos.includeAllModules = true;
   };
   documentation.man = {
     generateCaches = true;

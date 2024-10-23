@@ -1,14 +1,14 @@
 {
-  config,
   pkgs,
-  pkgs-stable,
+  inputs,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     nixfmt-rfc-style
     alejandra
     nixd
   ];
 
-  nix.nixPath = ["nixpkgs=${pkgs-stable}"];
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 }

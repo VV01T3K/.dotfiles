@@ -18,7 +18,7 @@
     xsettingsd # for partial scaling
     xorg.xrdb # for partial scaling
     jq
-    fastfetch #neofetch
+    fastfetch # neofetch
     tldr # man
     eza # ls
     ripgrep # grep
@@ -36,7 +36,6 @@
   ];
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -78,7 +77,7 @@
     LC_TIME = "pl_PL.UTF-8";
   };
 
-    # Enable the X11 windowing system.
+  # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   # services.xserver.enable = false; #default true
   services.xserver.enable = false;
@@ -103,7 +102,8 @@
   # services.printing.enable = true;
 
   # Presumably better gpu drivers
-  hardware.graphics = { # hardware.opengl in 24.05
+  hardware.graphics = {
+    # hardware.opengl in 24.05
     enable = true;
     extraPackages = with pkgs; [
       # your Open GL, Vulkan and VAAPI drivers
@@ -113,7 +113,9 @@
       vpl-gpu-rt # or intel-media-sdk for QSV
     ];
   };
-  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; }; # Force intel-media-driver
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+  }; # Force intel-media-driver
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Enable sound with pipewire.
@@ -153,14 +155,11 @@
   #   };
   # };
 
-
-  programs.ssh.startAgent = true; #!! fix for vscode (and etc) clone to container (ssh forwarding)
+  programs.ssh.startAgent = true; # !! fix for vscode (and etc) clone to container (ssh forwarding)
 
   # fonts.packages = with pkgs; [
   #   (nerdfonts.override { fonts = [ "FiraCode" "Hack" "GeistMono" "JetBrainsMono" ]; })
   # ];
-
-
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -192,7 +191,10 @@
     randomizedDelaySec = "45min";
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   nix.extraOptions = ''
     warn-dirty = false

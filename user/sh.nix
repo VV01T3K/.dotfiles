@@ -1,38 +1,39 @@
 { config, pkgs, ... }:
 
-let 
+let
   myAliases = {
-      neofetch = "fastfetch";
-      ls = "eza --icons=auto";
-      ll = "ls --long";
-      tree = "ls --tree";
-      # grep = "ripgrep"; # rg is shortcut for ripgrep
-      gzip = "pigz";
-      # cat = "bat";
-      cd = "z";
-      cdi = "zi";
-      # df = "dust";
-      cl = "clear";
-      ".." = "cd ..";
-      f = "fuck";
-      z- = "z -";
-      cd- = "z -";
-    };
+    neofetch = "fastfetch";
+    ls = "eza --icons=auto";
+    ll = "ls --long";
+    tree = "ls --tree";
+    # grep = "ripgrep"; # rg is shortcut for ripgrep
+    gzip = "pigz";
+    # cat = "bat";
+    cd = "z";
+    cdi = "zi";
+    # df = "dust";
+    cl = "clear";
+    ".." = "cd ..";
+    f = "fuck";
+    z- = "z -";
+    cd- = "z -";
+  };
 in
 {
   programs.bash = {
-      enable = true;
-      shellAliases = myAliases;
-      # bashrcExtra = ''
-      #   # Add your own customizations to the shell environment here.
-      # '';
-      initExtra = ''
+    enable = true;
+    shellAliases = myAliases;
+    # bashrcExtra = ''
+    #   # Add your own customizations to the shell environment here.
+    # '';
+    initExtra = ''
       export MANPAGER='sh -c "col -bx | bat -l man -p"'
       export MANROFFOPT="-c";
-      ''; 
+    '';
   };
 
-  programs.direnv = { # maybe also lorri
+  programs.direnv = {
+    # maybe also lorri
     enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
@@ -40,8 +41,8 @@ in
   };
   home.sessionVariables = {
     DIRENV_LOG_FORMAT = "";
-    YSU_MESSAGE_POSITION="after";
-    YSU_MODE="ALL";
+    YSU_MESSAGE_POSITION = "after";
+    YSU_MODE = "ALL";
   };
 
   programs.zoxide.enable = true;

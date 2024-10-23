@@ -1,9 +1,14 @@
-{ config, pkgs, userSettings, ... }:
+{
+  config,
+  pkgs,
+  userSettings,
+  ...
+}:
 
 {
   programs.git = {
     enable = true;
-    userName  = userSettings.nameGithub;
+    userName = userSettings.nameGithub;
     userEmail = userSettings.emailGithub;
     # extraConfig = {
     #   # init.defaultBranch = "main";

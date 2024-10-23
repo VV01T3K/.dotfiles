@@ -1,4 +1,9 @@
-{ config, pkgs, userSettings, ... }:
+{
+  config,
+  pkgs,
+  userSettings,
+  ...
+}:
 
 {
   imports = [
@@ -12,12 +17,19 @@
   home.stateVersion = "24.05"; # Please read the comment before changing.
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "Hack" "GeistMono" "JetBrainsMono" ]; })
-      kdePackages.kate
-      thunderbird
-      brave
-      vscode
-      # discord
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+        "Hack"
+        "GeistMono"
+        "JetBrainsMono"
+      ];
+    })
+    kdePackages.kate
+    thunderbird
+    brave
+    vscode
+    # discord
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -48,7 +60,7 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  
+
   services.home-manager.autoUpgrade = {
     enable = true;
     frequency = "weekly";

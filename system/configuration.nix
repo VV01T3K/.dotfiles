@@ -2,22 +2,30 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./nix-lsp.nix
-      ./flatpak.nix
-      ./virtualisation.nix
-      # ./documentation.nix
-    ];
+  imports = [
+    ./nix-lsp.nix
+    ./flatpak.nix
+    ./virtualisation.nix
+    # ./documentation.nix
+  ];
   # # Shells
-  environment.shells = with pkgs; [ bash zsh fish nushell ];
+  environment.shells = with pkgs; [
+    bash
+    zsh
+    fish
+    nushell
+  ];
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
 
   users.users.wojtek = {
     isNormalUser = true;
     description = "Wojtek";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
   };
 
   environment.systemPackages = with pkgs; [
