@@ -5,9 +5,9 @@
 }:
 {
   environment.systemPackages = with pkgs; [
-    nixfmt-rfc-style
-    alejandra
     nixd
+    nixfmt-rfc-style
+    # alejandra
   ];
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
