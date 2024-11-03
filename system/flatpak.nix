@@ -15,6 +15,7 @@
   # flatpak search bottles --> com.usebottles.bottles
   services.flatpak.packages = [
     "io.podman_desktop.PodmanDesktop"
+    "com.spotify.Client"
     # "com.usebottles.bottles"
     # "com.obsproject.Studio"
   ];
