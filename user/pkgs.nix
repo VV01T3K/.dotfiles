@@ -8,6 +8,7 @@
     tmux # windowing
     kitty # terminal
     trash-cli # trash
-    yazi # cli file manager
+    #yazi # cli file manager
+    legcord
   ];
 }

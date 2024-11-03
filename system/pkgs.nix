@@ -5,6 +5,6 @@
     entr # auto run
     atuin # history
     thefuck # da fuck
-    discord
+    # discord
   ];
 }

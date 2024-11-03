@@ -177,19 +177,19 @@
     # flake = "/home/wojtek/.dotfiles";
   };
 
-  system.autoUpgrade = {
-    enable = true;
-    allowReboot = true;
-    flake = "/home/wojtek/.dotfiles";
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      # "--commit-lock-file"
-      "-L" # print build logs
-    ];
-    dates = "02:00";
-    randomizedDelaySec = "45min";
-  };
+  # system.autoUpgrade = {
+  #   enable = true;
+  #   allowReboot = true;
+  #   flake = "/home/wojtek/.dotfiles";
+  #   flags = [
+  #     "--update-input"
+  #     "nixpkgs"
+  #     # "--commit-lock-file"
+  #     "-L" # print build logs
+  #   ];
+  #   dates = "02:00";
+  #   randomizedDelaySec = "45min";
+  # };
 
   nix.settings.experimental-features = [
     "nix-command"
