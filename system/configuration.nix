@@ -4,11 +4,11 @@
 {
   imports = [
     ./nix-lsp.nix
-    ./flatpak.nix
+    # ./flatpak.nix
     ./virtualisation.nix
     # ./documentation.nix
   ];
-  services.flatpak.enable = true;
+  # services.flatpak.enable = true;
   # # Shells
   environment.shells = with pkgs; [
     bash
@@ -34,6 +34,9 @@
       [General]
       background=${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Elarun/contents/images/2560x1600.png
     '')
+    # pkgs.flatpak
+    # pkgs.gnome-software
+    # pkgs.libsForQt5.discover
   ];
 
   networking.firewall.enable = true;

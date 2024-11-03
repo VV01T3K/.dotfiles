@@ -34,7 +34,7 @@
             ./system/hardware-configuration.nix
             ./system/common.nix
             ./system/pkgs.nix
-            inputs.nix-flatpak.nixosModules.nix-flatpak
+            # inputs.nix-flatpak.nixosModules.nix-flatpak
           ];
           specialArgs = {
             inherit systemSettings;
@@ -72,10 +72,10 @@
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-flatpak = {
-      url = "github:gmodena/nix-flatpak";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nix-flatpak = {
+    #   url = "github:gmodena/nix-flatpak";
+    #   # inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
 }

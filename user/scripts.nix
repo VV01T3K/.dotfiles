@@ -8,8 +8,9 @@
     '')
     (writeShellScriptBin "update" ''
       nh os switch --update
+      sleep 10
       nh home switch --update
-      flatpak update -y
+      # flatpak update -y
     '')
     (writeShellScriptBin "home" ''
       nh home switch
