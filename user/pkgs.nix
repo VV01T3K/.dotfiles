@@ -10,5 +10,6 @@
     trash-cli # trash
     #yazi # cli file manager
     legcord
+    spotify
   ];
 }
