@@ -8,6 +8,7 @@
     ./virtualisation.nix
     # ./documentation.nix
   ];
+  services.flatpak.enable = true;
   # # Shells
   environment.shells = with pkgs; [
     bash
