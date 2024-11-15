@@ -25,6 +25,7 @@
       ];
     })
     kdePackages.kate
+    kdePackages.kcalc
     thunderbird
     brave
     vscode
