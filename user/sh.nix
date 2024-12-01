@@ -1,4 +1,4 @@
-{ pkgs, pkgs-stable, ... }:
+{ pkgs, ... }:
 
 let
   myAliases = {
@@ -20,18 +20,6 @@ let
   };
 in
 {
-
-  home.packages = with pkgs-stable; [
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "Hack"
-        "GeistMono"
-        "JetBrainsMono"
-      ];
-    })
-  ];
-
   programs.bash = {
     enable = true;
     shellAliases = myAliases;

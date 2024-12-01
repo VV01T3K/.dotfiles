@@ -7,7 +7,7 @@
       lib = inputs.nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = inputs.nixpkgs.legacyPackages.${system};
-      pkgs-stable = inputs.nixpkgs-stable.legacyPackages.${system};
+      # pkgs-stable = inputs.nixpkgs-stable.legacyPackages.${system};
 
       systemSettings = {
         system = system;
@@ -55,7 +55,7 @@
           extraSpecialArgs = {
             inherit systemSettings;
             inherit userSettings;
-            inherit pkgs-stable;
+            # inherit pkgs-stable;
           };
         };
       };
@@ -63,7 +63,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+    # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

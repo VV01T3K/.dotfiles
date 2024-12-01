@@ -19,10 +19,10 @@
   home.packages = with pkgs; [
 
     # Nerd Fonts
-    # nerd-fonts.fira-code
-    # nerd-fonts.hack
-    # nerd-fonts.geist-mono
-    # nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
+    nerd-fonts.hack
+    nerd-fonts.geist-mono
+    nerd-fonts.jetbrains-mono
 
     kdePackages.kate
     kdePackages.kcalc
@@ -31,15 +31,6 @@
     vscode
     # discord
   ];
-
-  # (nerdfonts.override {
-  #     fonts = [
-  #       "FiraCode"
-  #       "Hack"
-  #       "GeistMono"
-  #       "JetBrainsMono"
-  #     ];
-  #   })
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
