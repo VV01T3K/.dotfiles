@@ -16,12 +16,10 @@
   home.stateVersion = "24.05"; # Please read the comment before changing.
   nixpkgs.config.allowUnfree = true;
 
+  fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
 
-    # Nerd Fonts
-    nerd-fonts.fira-code
-    nerd-fonts.hack
-    nerd-fonts.geist-mono
+    jetbrains-mono
     nerd-fonts.jetbrains-mono
 
     kdePackages.kate
