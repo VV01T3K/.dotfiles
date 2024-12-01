@@ -15,15 +15,15 @@
   home.homeDirectory = "/home/${userSettings.username}";
   home.stateVersion = "24.05"; # Please read the comment before changing.
   nixpkgs.config.allowUnfree = true;
-
   home.packages = with pkgs; [
-
-    # Nerd Fonts
-    nerd-fonts.fira-code
-    nerd-fonts.hack
-    nerd-fonts.geist-mono
-    nerd-fonts.jetbrains-mono
-
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+        "Hack"
+        "GeistMono"
+        "JetBrainsMono"
+      ];
+    })
     kdePackages.kate
     kdePackages.kcalc
     thunderbird
