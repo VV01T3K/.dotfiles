@@ -19,14 +19,14 @@
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
 
-    jetbrains-mono
+    # jetbrains-mono
     nerd-fonts.jetbrains-mono
 
     kdePackages.kate
     kdePackages.kcalc
     thunderbird
     brave
-    vscode
+    # vscode
     # discord
   ];
 
