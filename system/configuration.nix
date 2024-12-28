@@ -14,7 +14,7 @@
     bash
     zsh
     fish
-    nushell
+    # nushell
   ];
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;

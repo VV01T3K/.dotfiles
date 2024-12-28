@@ -53,7 +53,6 @@
       appearance.wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Elarun/contents/images/2560x1600.png";
     };
   };
-
   programs.konsole = {
     enable = true;
     profiles = {

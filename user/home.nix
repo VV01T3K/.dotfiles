@@ -19,8 +19,9 @@
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
 
-    # jetbrains-mono
     nerd-fonts.jetbrains-mono
+    nerd-fonts.geist-mono
+    nerd-fonts.fira-code
 
     kdePackages.kate
     kdePackages.kcalc

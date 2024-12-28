@@ -2,7 +2,7 @@
   description = "My first advanced flake";
 
   outputs =
-    { self, ... }@inputs:
+    { self, ghostty, ... }@inputs:
     let
       lib = inputs.nixpkgs.lib;
       system = "x86_64-linux";
@@ -35,6 +35,11 @@
             ./system/common.nix
             ./system/pkgs.nix
             # inputs.nix-flatpak.nixosModules.nix-flatpak
+            {
+              environment.systemPackages = [
+                ghostty.packages.x86_64-linux.default
+              ];
+            }
           ];
           specialArgs = {
             inherit systemSettings;
@@ -76,6 +81,9 @@
     #   url = "github:gmodena/nix-flatpak";
     #   # inputs.nixpkgs.follows = "nixpkgs";
     # };
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
   };
 
 }

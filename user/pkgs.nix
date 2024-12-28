@@ -4,9 +4,9 @@
     #vesktop
     onlyoffice-bin
     whatsapp-for-linux
-    warp-terminal
+    # warp-terminal
     tmux # windowing
-    kitty # terminal
+    # kitty # terminal
     trash-cli # trash
     #yazi # cli file manager
     legcord

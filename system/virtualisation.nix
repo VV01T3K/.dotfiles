@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     docker-compose # start group of containers for dev
     docker # containerization
-    bottles
+    # bottles
     podman-desktop
     # wineWowPackages.waylandFull
   ];
