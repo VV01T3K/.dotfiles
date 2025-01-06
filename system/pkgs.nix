@@ -6,6 +6,7 @@
     atuin # history
     thefuck # da fuck
     vscode
+    ghostty
     # discord
   ];
 }
