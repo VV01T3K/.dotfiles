@@ -45,4 +45,14 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  # services.xserver.dpi = 220; # default 96
+  # services.xserver.upscaleDefaultCursor = true; # default false
+  # environment.variables = {
+  #   GDK_SCALE = "2.2"; # default 1 I think
+  #   GDK_DPI_SCALE = "0.4"; # default 1 I think
+  #   _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2.2"; # default 1 I think
+  #   QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+  #   XCURSOR_SIZE = "64"; # default 16 I think
+  # };
 }
